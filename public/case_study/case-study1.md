@@ -2,7 +2,7 @@
 title: Designing Dashboards
 year: 2020
 tags: [Dashboard, User Experience Design]
-image: /images/dashboard.jpg
+image: /public/images/dashboard.jpg
 excerpt: Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.
 ---
 

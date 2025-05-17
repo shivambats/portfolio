@@ -2,7 +2,7 @@
 title: Vibrant Portraits of 2020
 year: 2018
 tags: [Illustration]
-image: /images/portraits.jpg
+image: /public/images/portraits.jpg
 excerpt: Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.
 ---
 
