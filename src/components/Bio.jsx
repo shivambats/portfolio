@@ -12,7 +12,7 @@ export default function Bio() {
         <a href="/resume.pdf" className="download-button">Download Resume</a>
       </div>
       <div className="bio-image">
-        <img src="/profile.png" alt="Shivam" />
+        <img src="public/images/profile.png" alt="Shivam" />
       </div>
     </section>
   );
