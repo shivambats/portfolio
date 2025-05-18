@@ -40,7 +40,7 @@ export default function Home({ latestBlogs, latestVideos }) {
         </div>
         <div className="flex-1 flex justify-center mt-10 md:mt-0">
           <img
-            src="/public/images/profile.png"
+            src="/images/profile.png"
             alt="Profile"
             className="w-48 h-48 md:w-60 md:h-60 rounded-full object-cover border-4 border-white shadow-lg"
           />
