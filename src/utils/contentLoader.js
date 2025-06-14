@@ -1,141 +1,106 @@
 import matter from 'gray-matter';
+import { Buffer } from 'buffer';
 
-// Mock data for blogs
-const mockBlogs = [
-  { 
-    id: 'blog1', 
-    title: 'Making a design system from scratch',
-    date: '12 Feb 2020',
-    tags: ['Design', 'Pattern'],
-    excerpt: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.',
-    content: `
-# Making a design system from scratch
-
-Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
-
-## The Challenge
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat, ipsum ac auctor ornare, nunc ligula scelerisque eros.
-
-## The Solution
-
-Praesent convallis nulla nec nisi tempus, vel tincidunt nunc condimentum. Nullam at lorem sed metus mollis placerat.
-    `
-  },
-  { 
-    id: 'blog2', 
-    title: 'Creating pixel perfect icons in Figma',
-    date: '12 Feb 2020',
-    tags: ['Figma', 'Icon Design'],
-    excerpt: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.',
-    content: `
-# Creating pixel perfect icons in Figma
-
-Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
-
-## The Approach
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat, ipsum ac auctor ornare, nunc ligula scelerisque eros.
-
-## The Techniques
-
-Praesent convallis nulla nec nisi tempus, vel tincidunt nunc condimentum. Nullam at lorem sed metus mollis placerat.
-    `
-  }
-];
-
-// Mock data for case studies
-const mockCaseStudies = [
-  { 
-    id: '1', 
-    title: 'Designing Dashboards',
-    year: '2020',
-    tags: ['Dashboard', 'User Experience Design'],
-    image: '/images/dashboard.jpg',
-    excerpt: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.',
-    content: `
-# Designing Dashboards
-
-Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
-
-## The Problem
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat, ipsum ac auctor ornare, nunc ligula scelerisque eros.
-
-## The Process
-
-Praesent convallis nulla nec nisi tempus, vel tincidunt nunc condimentum. Nullam at lorem sed metus mollis placerat.
-
-## The Result
-
-Cras ultricies ligula sed magna dictum porta. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.
-    `
-  },
-  { 
-    id: '2', 
-    title: 'Vibrant Portraits of 2020',
-    year: '2018',
-    tags: ['Illustration'],
-    image: '/images/portraits.jpg',
-    excerpt: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.',
-    content: `
-# Vibrant Portraits of 2020
-
-Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
-
-## The Inspiration
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat, ipsum ac auctor ornare, nunc ligula scelerisque eros.
-
-## The Technique
-
-Praesent convallis nulla nec nisi tempus, vel tincidunt nunc condimentum. Nullam at lorem sed metus mollis placerat.
-
-## The Collection
-
-Cras ultricies ligula sed magna dictum porta. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.
-    `
-  }
-];
-
-// Function to fetch all blogs
-export async function fetchAllBlogs() {
-  // Simulate a network delay
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve(mockBlogs);
-    }, 300);
-  });
+// Make Buffer available globally for gray-matter
+if (typeof window !== 'undefined') {
+  window.Buffer = Buffer;
 }
 
-// Function to fetch a specific blog
-export async function fetchBlog(id) {
-  // Simulate a network delay
-  return new Promise(resolve => {
-    setTimeout(() => {
-      const blog = mockBlogs.find(blog => blog.id === id);
-      resolve(blog || null);
-    }, 300);
-  });
+// Mock data removed - using actual markdown files
+
+// Function to fetch all posts (unified system for both blogs and case studies)
+export async function fetchAllPosts() {
+  try {
+    // Fetch the index to get the list of post IDs
+    const indexResponse = await fetch('/case_study/index.json');
+    const postIds = await indexResponse.json();
+    
+    // Fetch each post markdown file
+    const posts = await Promise.all(
+      postIds.map(async (id) => {
+        try {
+          const response = await fetch(`/case_study/${id}.md`);
+          
+          if (!response.ok) {
+            return null;
+          }
+          
+          const markdownContent = await response.text();
+          
+          // Parse the markdown with frontmatter
+          const { data, content } = matter(markdownContent);
+          
+          return {
+            id,
+            title: data.title,
+            type: data.type || 'Case Study', // Default to Case Study for backward compatibility
+            year: data.year,
+            date: data.date,
+            tags: data.tags || [],
+            image: data.image,
+            excerpt: data.excerpt,
+            content
+          };
+        } catch (error) {
+          return null;
+        }
+      })
+    );
+    
+    // Filter out any null values (failed to load)
+    const result = posts.filter(post => post !== null);
+    return result;
+  } catch (error) {
+    return [];
+  }
 }
 
-// Function to fetch all case studies
+// Function to fetch posts by type
+export async function fetchPostsByType(type) {
+  const allPosts = await fetchAllPosts();
+  return allPosts.filter(post => post.type === type);
+}
+
+// Function to fetch a specific post
+export async function fetchPost(id) {
+  try {
+    const response = await fetch(`/case_study/${id}.md`);
+    if (!response.ok) {
+      throw new Error(`Post ${id} not found`);
+    }
+    
+    const markdownContent = await response.text();
+    const { data, content } = matter(markdownContent);
+    
+    return {
+      id,
+      title: data.title,
+      type: data.type || 'Case Study',
+      year: data.year,
+      date: data.date,
+      tags: data.tags || [],
+      image: data.image,
+      excerpt: data.excerpt,
+      content
+    };
+  } catch (error) {
+    return null;
+  }
+}
+
+// Legacy function aliases for backward compatibility
 export async function fetchAllCaseStudies() {
-  // Simulate a network delay
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve(mockCaseStudies);
-    }, 300);
-  });
+  return await fetchPostsByType('Case Study');
 }
 
-// Function to fetch a specific case study
 export async function fetchCaseStudy(id) {
-  // Simulate a network delay
-  return new Promise(resolve => {
-    setTimeout(() => {
-      const caseStudy = mockCaseStudies.find(study => study.id === id);
-      resolve(caseStudy || null);
-    }, 300);
-  });
+  return await fetchPost(id);
+}
+
+export async function fetchAllBlogs() {
+  return await fetchPostsByType('Blog');
+}
+
+export async function fetchBlog(id) {
+  return await fetchPost(id);
 } 

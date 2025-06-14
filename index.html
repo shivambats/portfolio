@@ -5,6 +5,45 @@
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shivam Batra</title>
+    <script>
+      // Apply theme immediately to prevent flash
+      (function() {
+        // Temporarily disable all transitions to prevent flash
+        const css = document.createElement('style');
+        css.appendChild(document.createTextNode(`
+          *, *::before, *::after {
+            transition-duration: 0s !important;
+            transition-delay: 0s !important;
+            animation-duration: 0s !important;
+            animation-delay: 0s !important;
+          }
+        `));
+        document.head.appendChild(css);
+        
+        const getInitialTheme = () => {
+          const savedTheme = localStorage.getItem('theme');
+          if (savedTheme) {
+            return savedTheme;
+          }
+          // Check if user prefers dark mode at OS level
+          return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        };
+        
+        const theme = getInitialTheme();
+        document.documentElement.setAttribute('data-theme', theme);
+        
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark-theme');
+        } else {
+          document.documentElement.classList.remove('dark-theme');
+        }
+        
+        // Re-enable transitions after a brief delay
+        setTimeout(() => {
+          document.head.removeChild(css);
+        }, 100);
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

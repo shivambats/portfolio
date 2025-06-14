@@ -8,11 +8,15 @@ import './styles.css';
 import App from './App';
 
 // Lazy load other components
+const PostDetail = lazy(() => import('./pages/PostDetail'));
+const AllPosts = lazy(() => import('./pages/AllPosts'));
+const ContactPage = lazy(() => import('./pages/Contact'));
+
+// Legacy components for backward compatibility
 const BlogDetail = lazy(() => import('./pages/BlogDetail'));
 const CaseStudyDetail = lazy(() => import('./pages/CaseStudyDetail'));
 const AllBlogs = lazy(() => import('./pages/AllBlogs'));
 const AllCaseStudies = lazy(() => import('./pages/AllCaseStudies'));
-const ContactPage = lazy(() => import('./pages/Contact'));
 
 // Create a loading component
 const PageLoader = () => (
@@ -28,10 +32,17 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Suspense fallback={<PageLoader />}>
           <Routes>
             <Route path="/" element={<App />} />
+            
+            {/* New unified routes */}
+            <Route path="/post/:id" element={<PostDetail />} />
+            <Route path="/posts" element={<AllPosts />} />
+            
+            {/* Legacy routes for backward compatibility */}
             <Route path="/blog/:id" element={<BlogDetail />} />
             <Route path="/case-study/:id" element={<CaseStudyDetail />} />
             <Route path="/blogs" element={<AllBlogs />} />
             <Route path="/case-studies" element={<AllCaseStudies />} />
+            
             <Route path="/contact" element={<ContactPage />} />
           </Routes>
         </Suspense>

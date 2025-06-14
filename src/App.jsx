@@ -1,8 +1,8 @@
 import React from 'react';
 import Layout from './components/Layout';
 import Bio from './components/Bio';
-import CaseStudies from './components/CaseStudies';
-import Blog from './components/Blog';
+import Companies from './components/Companies';
+import Posts from './components/CaseStudies';
 import Contact from './components/Contact';
 
 export default function App() {
@@ -10,8 +10,8 @@ export default function App() {
     <Layout>
       <div className="container">
         <Bio />
-        <Blog limit={5} />
-        <CaseStudies limit={5} />
+        <Companies />
+        <Posts limit={5} />
         <Contact />
       </div>
     </Layout>

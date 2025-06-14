@@ -10,7 +10,7 @@ export default function Layout({ children }) {
       </main>
       <footer className="site-footer">
         <div className="container">
-          <p>© {new Date().getFullYear()} Shivam Doe. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Shivam Batra. All rights reserved.</p>
         </div>
       </footer>
     </div>

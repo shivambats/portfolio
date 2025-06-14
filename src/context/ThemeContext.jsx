@@ -20,11 +20,11 @@ export const ThemeProvider = ({ children }) => {
     localStorage.setItem('theme', theme);
     document.documentElement.setAttribute('data-theme', theme);
     
-    // Add or remove dark class from body
+    // Add or remove dark class from html element (consistent with initial script)
     if (theme === 'dark') {
-      document.body.classList.add('dark-theme');
+      document.documentElement.classList.add('dark-theme');
     } else {
-      document.body.classList.remove('dark-theme');
+      document.documentElement.classList.remove('dark-theme');
     }
   }, [theme]);
 

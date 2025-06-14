@@ -75,8 +75,7 @@ export default function Header() {
         </div>
         
         <nav className={`site-nav ${menuOpen ? 'open' : ''}`}>
-          <Link to="/case-studies" onClick={() => setMenuOpen(false)}>Works</Link>
-          <Link to="/blogs" onClick={() => setMenuOpen(false)}>Blog</Link>
+          <Link to="/posts" onClick={() => setMenuOpen(false)}>Posts</Link>
           <Link to="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>
           
           {/* Desktop-only theme toggle */}

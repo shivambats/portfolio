@@ -1,18 +1,19 @@
 ---
-title: Making a design system from scratch
-date: 2020-02-12
-tags: [Design, Pattern]
+title: Creating pixel perfect icons in Figma
+type: Blog
+date: 2020-02-10
+tags: [Figma, Icon Design, UI/UX]
 excerpt: Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
 ---
 
-# Making a design system from scratch
+# Creating pixel perfect icons in Figma
 
 Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
 
-## The Challenge
+## The Approach
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat, ipsum ac auctor ornare, nunc ligula scelerisque eros.
 
-## The Solution
+## The Techniques
 
 Praesent convallis nulla nec nisi tempus, vel tincidunt nunc condimentum. Nullam at lorem sed metus mollis placerat. 

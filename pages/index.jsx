@@ -25,8 +25,10 @@ export default function Home({ latestBlogs, latestVideos }) {
         <div className="flex-1 max-w-xl">
           <h1 className="text-5xl font-bold mb-6 leading-tight">
             Hi, I am Shivam,<br />
-            Creative Technologist
           </h1>
+          <h2 className="text-2xl font-bold mb-6 leading-tight">
+          Helping Small Businesses Scale with Cloud, Automation, and AI
+          </h2>
           <p className="mb-8 text-gray-700">
             Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
           </p>

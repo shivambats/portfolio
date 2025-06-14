@@ -2,25 +2,6 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { fetchAllBlogs } from '../utils/contentLoader';
 
-// Mock data for blogs
-const mockBlogs = [
-  { 
-    id: 'blog1', 
-    title: 'Making a design system from scratch',
-    date: '12 Feb 2020',
-    tags: ['Design', 'Pattern'],
-    excerpt: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.'
-  },
-  { 
-    id: 'blog2', 
-    title: 'Creating pixel perfect icons in Figma',
-    date: '12 Feb 2020',
-    tags: ['Figma', 'Icon Design'],
-    excerpt: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.'
-  },
-  // Add more mock blog entries as needed
-];
-
 export default function Blog({ limit }) {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -31,7 +12,6 @@ export default function Blog({ limit }) {
         const blogData = await fetchAllBlogs();
         setBlogs(blogData);
       } catch (error) {
-        console.error('Error loading blogs:', error);
         // Fallback to empty array if fetch fails
         setBlogs([]);
       } finally {
@@ -45,15 +25,46 @@ export default function Blog({ limit }) {
   // Sort blogs in reverse chronological order (newest first)
   const sortedBlogs = useMemo(() => {
     return [...blogs].sort((a, b) => {
-      return new Date(b.date) - new Date(a.date);
+      const dateA = new Date(a.date);
+      const dateB = new Date(b.date);
+      return dateB - dateA;
     });
   }, [blogs]);
+  
+  // Helper function to format date
+  const formatDate = (dateValue) => {
+    if (!dateValue) return '';
+    
+    // If it's already a string, return it
+    if (typeof dateValue === 'string') return dateValue;
+    
+    // If it's a Date object, format it
+    if (dateValue instanceof Date) {
+      return dateValue.toLocaleDateString('en-US', {
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric'
+      });
+    }
+    
+    // Try to parse it as a date
+    try {
+      const date = new Date(dateValue);
+      return date.toLocaleDateString('en-US', {
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric'
+      });
+    } catch (error) {
+      return String(dateValue);
+    }
+  };
   
   // If limit is provided, only show that many blogs
   const displayedBlogs = limit ? sortedBlogs.slice(0, limit) : sortedBlogs;
   
   if (loading) {
-    return <div className="loading">Loading blogs...</div>;
+    return <div className="loading">Loading recent posts...</div>;
   }
   
   return (
@@ -65,22 +76,33 @@ export default function Blog({ limit }) {
         )}
       </div>
       
-      <div className="blog-grid">
-        {displayedBlogs.map((blog) => (
-          <div key={blog.id} className="blog-card">
-            <h3 className="blog-title">{blog.title}</h3>
-            <div className="blog-meta">
-              <span className="blog-date">{blog.date}</span>
-              <span className="separator">|</span>
-              <span className="blog-tags">{blog.tags.join(', ')}</span>
+      {blogs.length === 0 ? (
+        <div>No recent posts found. Check console for errors.</div>
+      ) : (
+        <div className="blog-grid">
+          {displayedBlogs.map((blog) => (
+            <div key={blog.id} className="blog-card">
+              {blog.image && (
+                <div className="blog-image">
+                  <img src={blog.image} alt={blog.title} />
+                </div>
+              )}
+              <div className="blog-content">
+                <h3 className="blog-title">{blog.title}</h3>
+                <div className="blog-meta">
+                  <span className="blog-date">{formatDate(blog.date)}</span>
+                  <span className="separator">|</span>
+                  <span className="blog-tags">{blog.tags.join(', ')}</span>
+                </div>
+                <p className="blog-excerpt">{blog.excerpt}</p>
+                <Link to={`/blog/${blog.id}`} className="read-more">
+                  Read more →
+                </Link>
+              </div>
             </div>
-            <p className="blog-excerpt">{blog.excerpt}</p>
-            <Link to={`/blog/${blog.id}`} className="read-more">
-              Read more →
-            </Link>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
     </section>
   );
 } 
