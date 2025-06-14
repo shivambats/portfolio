@@ -1,7 +1,7 @@
 ---
 title: Handling exceptions in Python a cleaner way, using Decorators
 type: Blog
-image: /public/case_study/decorator_exception.png
+image: /case_study/decorator_exception.png
 date: 2020-02-12
 tags: [Python, Programming, Decorators]
 excerpt: Handling exceptions in python can get in some cases repetitive and ugly, we can solve that using decorators.

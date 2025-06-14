@@ -3,7 +3,7 @@ title: First Mile System Scales Automated Route Assignment with Flare Integratio
 type: Case Study
 year: 2024
 tags: [Logistics, Kafka, AWS]
-image: /public/case_study/first_mile_case_study.png
+image: /case_study/first_mile_case_study.png
 excerpt: The First Mile system, a high-volume logistics platform, automated its route assignment process for Pickup Requests (PURs) by integrating with Flare, a geospatial routing service. Prior to the integration, the manual effort required by team leads (TLs) to assign PURs to routes constrained operational scalability and introduced human dependency into time-critical processes.
 
 ---

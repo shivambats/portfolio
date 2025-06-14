@@ -3,7 +3,7 @@ title: Replacing Stripe with a Secure, Scalable, and Cost-Efficient Card Tokeniz
 type: Case Study
 year: 2025
 tags: [Payments, Stripe, Migrations]
-image: /public/case_study/case-study2.jpg
+image: /case_study/case-study2.jpg
 excerpt: Our platform originally relied on Stripe to manage card payments and tokenization. Stripe offered an excellent developer experience and rapid integration capabilities, which allowed us to go to market quickly. However, as we scaled, we encountered challenges related to cost, flexibility, and control over sensitive data.
 
 ---
@@ -39,7 +39,7 @@ We needed to:
 
 To address these challenges, we designed and implemented an in-house card tokenization system using **AWS-native services**, primarily **AWS Payment Cryptography**, **DynamoDB**, **KMS**, and **API Gateway + Lambda** for secure compute and access control.
 
-![diagram-export-23-05-2025-09_41_53.png](/public/case_study/case-study2.jpg)
+![diagram-export-23-05-2025-09_41_53.png](/case_study/case-study2.jpg)
 
 ### **Gathering Requirements**
 

@@ -3,7 +3,7 @@ title: Building a Scalable Appointment Ingestion Platform for a Healthcare Provi
 type: Case Study
 year: 2024
 tags: [Healthcare, AWS]
-image: /public/case_study/case-study1.jpg
+image: /case_study/case-study1.jpg
 excerpt: A leading U.S.-based healthcare provider needed to consolidate high-volume appointment data from a growing network of clinics, diagnostic labs, and telehealth platforms. This data arrived via both file uploads and API integrations, and existing ingestion systems were brittle, slow, and costly.
 
 ---
