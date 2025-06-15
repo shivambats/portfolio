@@ -25,7 +25,7 @@ export default function Bio() {
         <a href="https://calendly.com/shivambats/syncup" target="_blank" rel="noopener noreferrer" className="download-button">Schedule a Call</a>
       </div>
       <div className="bio-image">
-        <img src="/images/profile.png" alt="Shivam" />
+        <img src="/images/A63563C1-6F1E-46CB-9D4E-526BF1F010DB-Photoroom.png" alt="Shivam" />
       </div>
     </section>
   );
