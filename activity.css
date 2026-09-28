@@ -16,3 +16,12 @@
 .activity-pair .update-card>a{grid-column:2;grid-row:2;align-self:start}
 @media(max-width:850px){.activity-pair{grid-template-columns:1fr;gap:36px}.activity-pair .updates{padding-top:36px;border-top:1px solid var(--line)}}
 @media(max-width:720px){.activity-pair{gap:28px}.activity-pair .updates{padding-top:28px}.activity-pair .timeline:before{left:77px}.activity-pair .timeline-item{grid-template-columns:62px 31px minmax(0,1fr)}.activity-pair .timeline-dot{margin-left:10px}.activity-pair .timeline-item h2{font-size:19px}}
+
+/* Match the reduced portfolio type scale. */
+.activity-pair .timeline-item h2{font-size:16px}
+.activity-pair .timeline-item div>span{font-size:12px}
+.activity-pair .updates .update-card h3{font-size:17px}
+.activity-pair .updates .update-card>div:nth-child(2)>p{font-size:12px}
+.commit-item h2{font-size:16px}
+.loading-copy{font-size:12px}
+@media(max-width:720px){.activity-pair .timeline-item h2{font-size:16px}}

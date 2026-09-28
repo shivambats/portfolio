@@ -44,3 +44,25 @@
   .article h1{font-size:34px}
   .article-body h2{font-size:23px}
 }
+
+/* Smaller type for the writing index and articles. */
+.blog-page h1{font-size:clamp(30px,3.8vw,46px)}
+.blog-page .intro{font-size:14px}
+.markdown-post h2{font-size:18px}
+.markdown-post p{font-size:12px}
+.article h1{font-size:clamp(29px,3.4vw,42px)}
+.article .lede{font-size:16px}
+.article-body{font-size:15px}
+.article-body h2{font-size:21px}
+.article-body h3{font-size:17px}
+.article-body table{font-size:13px}
+.article-body code,.article-body pre{font-size:12px}
+.article-overview a{font-size:11px}
+@media(max-width:720px){
+  .blog-page h1{font-size:32px}
+  .markdown-post h2{font-size:17px}
+  .article h1{font-size:30px}
+  .article .lede{font-size:15px}
+  .article-body{font-size:14px}
+  .article-body h2{font-size:20px}
+}

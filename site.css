@@ -171,3 +171,31 @@ a:hover,a:focus-visible{color:var(--hover-text)}
   .intro-copy h2{font-size:21px}
   .activity-pair .timeline-item h2{font-size:18px}
 }
+
+/* Smaller type across the portfolio and shared site chrome. */
+body{font-size:14px}
+.wordmark{font-size:23px}
+.site-header a,footer a{font-size:11px}
+.eyebrow,.section-title>a{font-size:10px}
+.intro-copy h1{font-size:clamp(29px,2.9vw,38px)!important}
+.intro-copy h2{font-size:clamp(18px,1.9vw,24px)}
+.intro-copy>p:not(.eyebrow){font-size:15px}
+.intro-links a{font-size:10px}
+.project-label{font-size:10px}
+.project-story h2{font-size:34px!important}
+.project-summary{font-size:14px}
+.project-link{font-size:10px}
+.experience-intro{font-size:clamp(26px,3.3vw,42px)}
+.experience-lede{font-size:16px}
+.experience-grid h3,.contact h2{font-size:clamp(22px,2.5vw,32px)}
+.experience-grid article>p:last-child,.focus-copy{font-size:14px}
+.experience-company,.contact-links a{font-size:10px}
+@media(max-width:720px){
+  .intro-copy h1{font-size:30px!important}
+  .intro-copy h2{font-size:18px}
+  .intro-copy>p:not(.eyebrow){font-size:14px}
+  .project-story h2{font-size:30px!important}
+  .project-summary{font-size:13px}
+  .experience-lede{font-size:14px}
+  .experience-grid article>p:last-child,.focus-copy{font-size:13px}
+}
