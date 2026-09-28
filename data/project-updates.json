@@ -1,0 +1,4 @@
+[
+  {"date":"2026-09-22","type":"Agent in progress","mainProject":"Vegath","project":"OpenBoxes delayed shipment agent","title":"Investigating delayed shipments before they become escalations","summary":"An operations agent that gathers shipment context, spots exceptions, and prepares the next safe action for an OpenBoxes team."},
+  {"date":"2026-09-18","type":"Product update","mainProject":"Abhyasa","project":"Learning experience","title":"Making the next revision step easier to find","summary":"Improving how learners see the chapter to revisit and continue their progress in context.","url":"https://abhyasa.vegath.tech"}
+]

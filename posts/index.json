@@ -1,0 +1,6 @@
+[
+  {"slug":"case-study2","title":"Replacing Stripe with a Secure, Scalable, and Cost-Efficient Card Tokenization System Using AWS","year":2025,"topic":"Case Study","description":"Our platform originally relied on Stripe to manage card payments and tokenization."},
+  {"slug":"case-study1","title":"Building a Scalable Appointment Ingestion Platform for a Healthcare Provider","year":2024,"topic":"Case Study","description":"A leading U.S.-based healthcare provider needed to consolidate high-volume appointment data from a growing network of clinics, diagnostic labs, and telehealth platforms."},
+  {"slug":"case-study3","title":"First Mile System Scales Automated Route Assignment with Flare Integration Using Kafka","year":2024,"topic":"Case Study","description":"The First Mile system, a high-volume logistics platform, automated its route assignment process for Pickup Requests (PURs) by integrating with Flare, a geospatial routing service."},
+  {"slug":"blog1","title":"Handling exceptions in Python a cleaner way, using Decorators","date":"2020-02-12","year":2020,"topic":"Blog","description":"Handling exceptions in python can get in some cases repetitive and ugly, we can solve that using decorators."}
+]
