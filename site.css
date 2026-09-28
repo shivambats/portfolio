@@ -185,9 +185,10 @@ body{font-size:14px}
 .project-story h2{font-size:34px!important}
 .project-summary{font-size:14px}
 .project-link{font-size:10px}
-.experience-intro{font-size:clamp(26px,3.3vw,42px)}
+.experience-intro{font-size:clamp(22px,2.5vw,32px);line-height:1.16;letter-spacing:-.045em}
 .experience-lede{font-size:16px}
-.experience-grid h3,.contact h2{font-size:clamp(22px,2.5vw,32px)}
+.experience-grid h3{font-size:clamp(18px,1.9vw,24px);line-height:1.2;letter-spacing:-.035em}
+.contact h2{font-size:clamp(22px,2.5vw,32px)}
 .experience-grid article>p:last-child,.focus-copy{font-size:14px}
 .experience-company,.contact-links a{font-size:10px}
 @media(max-width:720px){
