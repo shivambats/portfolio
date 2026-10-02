@@ -233,3 +233,11 @@ body{font-size:14px}
 :root[data-theme="dark"] .blog-page .intro strong,:root[data-theme="dark"] .article-body strong{color:var(--ink)}
 :root[data-theme="dark"] .update-card{background:#1d2520}
 :root[data-theme="dark"] .activity-pair .update-project,:root[data-theme="dark"] .activity-pair .updates .eyebrow{color:#c58484}
+
+/* Give the experience collage a larger share of the section and soften the intro scale. */
+.experience-layout{grid-template-columns:minmax(0,1fr) minmax(390px,.82fr);gap:48px}
+.experience-collage{grid-template-rows:190px 190px;gap:14px}
+.intro-copy h1{font-size:clamp(27px,2.5vw,33px)!important}
+.intro-copy h2{font-size:clamp(16px,1.55vw,20px)}
+@media(max-width:1000px){.experience-layout{grid-template-columns:minmax(0,1fr) minmax(310px,.8fr);gap:30px}.experience-collage{grid-template-rows:155px 155px}}
+@media(max-width:720px){.experience-layout{grid-template-columns:1fr;gap:24px}.experience-collage{grid-row:1;grid-template-rows:130px 130px;max-width:440px}.intro-copy h1{font-size:27px!important}.intro-copy h2{font-size:16px}}
