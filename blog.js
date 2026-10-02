@@ -82,7 +82,7 @@ async function renderArticle(post) {
   root.innerHTML = `<div class="article-layout">${overview}<div class="article-main"><a class="back-link" href="blog.html">← All writing</a><p class="article-meta">${dateLabel(post)} · ${escapeHtml(post.topic)}</p><h1>${escapeHtml(frontmatter.title)}</h1><p class="lede">${escapeHtml(frontmatter.excerpt || frontmatter.lede || '')}</p><div class="article-body">${html}</div></div></div>`;
   const article = root.querySelector('.article-main');
   const overviewNav = root.querySelector('.article-overview');
-  if (overviewNav) window.addEventListener('scroll', () => overviewNav.classList.toggle('is-hidden', window.scrollY > article.offsetTop + 80), { passive: true });
+  if (overviewNav) window.addEventListener('scroll', () => overviewNav.classList.toggle('is-scrolled', window.scrollY > article.offsetTop + 80), { passive: true });
 }
 
 function renderList(posts) {

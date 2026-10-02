@@ -66,8 +66,14 @@
   .article-body{font-size:14px}
   .article-body h2{font-size:20px}
 }
-.article-overview{transition:opacity .2s ease,transform .2s ease}.article-overview.is-hidden{opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-8px)}
-@media(max-width:900px){.article-overview.is-hidden{display:none}}
+.article-overview{transition:opacity .2s ease,transform .2s ease}
 :root[data-theme="dark"] .markdown-post p,:root[data-theme="dark"] .article-overview a,:root[data-theme="dark"] .article-body blockquote{color:#bbc5be}
 :root[data-theme="dark"] .article-body code{background:#28352e}
 :root[data-theme="dark"] .article-body pre{background:#080d0b}
+
+/* Keep the section index visible beside a centered article column. */
+.article{max-width:1280px;margin-inline:auto}
+.article-layout{grid-template-columns:190px minmax(0,760px);justify-content:center;gap:44px}
+.article-overview{margin-left:-12px}
+@media(max-width:900px){.article-layout{grid-template-columns:minmax(0,760px);justify-content:center;gap:24px}.article-overview{position:static;max-height:none;overflow:visible;margin:0}.article-overview ol{columns:2;column-gap:24px}.article-overview li{break-inside:avoid}}
+@media(max-width:560px){.article-overview ol{columns:1}}
