@@ -80,6 +80,9 @@ async function renderArticle(post) {
   root.className = 'article section';
   const overview = headings.length ? `<nav class="article-overview" aria-label="Section overview"><p>On this page</p><ol>${headings.map((heading) => `<li class="overview-level-${heading.level}"><a href="#${heading.id}">${escapeHtml(heading.title)}</a></li>`).join('')}</ol></nav>` : '';
   root.innerHTML = `<div class="article-layout">${overview}<div class="article-main"><a class="back-link" href="blog.html">← All writing</a><p class="article-meta">${dateLabel(post)} · ${escapeHtml(post.topic)}</p><h1>${escapeHtml(frontmatter.title)}</h1><p class="lede">${escapeHtml(frontmatter.excerpt || frontmatter.lede || '')}</p><div class="article-body">${html}</div></div></div>`;
+  const article = root.querySelector('.article-main');
+  const overviewNav = root.querySelector('.article-overview');
+  if (overviewNav) window.addEventListener('scroll', () => overviewNav.classList.toggle('is-hidden', window.scrollY > article.offsetTop + 80), { passive: true });
 }
 
 function renderList(posts) {
