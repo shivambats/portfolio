@@ -1,3 +1,10 @@
+---
+title: Designing AI Agents for Operations
+type: Blog
+date: 2026-10-03
+excerpt: A practical framework for designing enterprise AI agents around security, reliability, and cost, with guidance on permissions, workflows, and multi-agent systems.
+---
+
 # Designing AI Agents for Operations
 
 ## What enterprises need from AI agents
@@ -320,4 +327,3 @@ The architecture follows the responsibilities, dependencies, and requirements of
 9. OpenAI, [GPT-4.1 model documentation](https://developers.openai.com/api/docs/models/gpt-4.1).
 
 *Company descriptions and prices were checked on 3 October 2026. Diagrams and calculations are illustrative. Research figures apply to the stated evaluations.*
-
