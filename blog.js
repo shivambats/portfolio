@@ -78,11 +78,19 @@ async function renderArticle(post) {
   const { frontmatter, html, headings } = parseMarkdown(await response.text());
   document.title = `${frontmatter.title} — Shivam Batra`;
   root.className = 'article section';
-  const overview = headings.length ? `<nav class="article-overview" aria-label="Section overview"><ol>${headings.map((heading) => `<li class="overview-level-${heading.level}"><a href="#${heading.id}" aria-label="${escapeHtml(heading.title)}"><span aria-hidden="true">−</span><span class="overview-title">${escapeHtml(heading.title)}</span></a></li>`).join('')}</ol></nav>` : '';
+  const overview = headings.length ? `<div class="overview-slot"><nav class="article-overview" aria-label="Section overview"><p>On this page</p><ol>${headings.map((heading) => `<li class="overview-level-${heading.level}"><a href="#${heading.id}" aria-label="${escapeHtml(heading.title)}"><span class="overview-marker" aria-hidden="true">-</span><span class="overview-title">${escapeHtml(heading.title)}</span></a></li>`).join('')}</ol></nav></div>` : '';
   root.innerHTML = `<div class="article-layout">${overview}<div class="article-main"><a class="back-link" href="blog.html">← All writing</a><p class="article-meta">${dateLabel(post)} · ${escapeHtml(post.topic)}</p><h1>${escapeHtml(frontmatter.title)}</h1><p class="lede">${escapeHtml(frontmatter.excerpt || frontmatter.lede || '')}</p><div class="article-body">${html}</div></div></div>`;
-  const article = root.querySelector('.article-main');
   const overviewNav = root.querySelector('.article-overview');
-  if (overviewNav) window.addEventListener('scroll', () => overviewNav.classList.toggle('is-scrolled', window.scrollY > article.offsetTop + 80), { passive: true });
+  if (overviewNav) {
+    const overviewSlot = overviewNav.parentElement;
+    const updateOverview = () => {
+      if (!overviewNav.classList.contains('is-scrolled')) overviewSlot.style.minHeight = `${overviewNav.offsetHeight}px`;
+      overviewNav.classList.toggle('is-scrolled', window.scrollY > 40);
+    };
+    window.addEventListener('scroll', updateOverview, { passive: true });
+    window.addEventListener('resize', updateOverview);
+    updateOverview();
+  }
 }
 
 function renderList(posts) {
