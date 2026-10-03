@@ -11,6 +11,8 @@
 .article-body blockquote{margin:25px 0;padding:6px 0 6px 20px;border-left:2px solid var(--blue);color:#52605a}
 .article-body figure{margin:30px 0}
 .article-body figure img{display:block;max-width:100%;height:auto}
+.article-body pre.mermaid{background:#f4f5f0;color:var(--ink);padding:20px;overflow-x:auto;border:1px solid var(--line);border-radius:4px;text-align:center}
+.article-body pre.mermaid svg{max-width:100%;height:auto}
 .table-scroll{overflow-x:auto;margin:26px 0}
 .article-body table{width:100%;border-collapse:collapse;font-size:14px;line-height:1.5}
 .article-body th,.article-body td{text-align:left;padding:11px 13px;border-bottom:1px solid var(--line)}
@@ -88,6 +90,7 @@
 :root[data-theme="dark"] .markdown-post p,:root[data-theme="dark"] .article-overview a,:root[data-theme="dark"] .article-body blockquote{color:#bbc5be}
 :root[data-theme="dark"] .article-body code{background:#28352e}
 :root[data-theme="dark"] .article-body pre{background:#080d0b}
+:root[data-theme="dark"] .article-body pre.mermaid{background:#17211d;color:#e6eee8}
 
 /* Keep the section index beside the article on wide screens. */
 .article{max-width:1280px;margin-inline:auto}
