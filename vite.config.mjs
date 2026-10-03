@@ -1,5 +1,5 @@
 import { cp } from 'node:fs/promises';
-import { resolve } from 'node:path';
+import { basename, resolve } from 'node:path';
 
 export default {
   build: {
@@ -14,7 +14,11 @@ export default {
     name: 'copy-static-content',
     async closeBundle() {
       for (const directory of ['data', 'posts', 'images']) {
-        await cp(resolve(directory), resolve('dist', directory), { recursive: true });
+        await cp(resolve(directory), resolve('dist', directory), {
+          recursive: true,
+          filter: (source) => basename(source) !== '.DS_Store'
+            && source !== resolve('images', 'experience'),
+        });
       }
     },
   }],
